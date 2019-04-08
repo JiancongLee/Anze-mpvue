@@ -8,6 +8,7 @@
         <p v-else>微信用户</p>
       </div>
     </div>
+
     <div class="iconlist">
       <div @click="goTo(item.url)" v-for="(item, index) in listData" :key="index">
         <span class="iconfont" :class="item.icon"></span>
@@ -18,29 +19,36 @@
 </template>
 
 <script>
-  import {
-    get,
-    toLogin,
-    login
-  } from "../../utils";
+  import { get, toLogin, login } from "../../utils"
+  // import user from '../../services/user'
+  import { isLogin } from "../../utils/login";
+
   export default {
     onShow() {
       // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
-      if (login()) {
-        this.userInfo = login();
-        console.log(this.userInfo);
+      // if (login()) {
+      //   console.log('hahah3')
+      //   this.userInfo = login();
+      //   console.log(this.userInfo);
+      //   this.avator = this.userInfo.avatarUrl;
+      // }
+      if (isLogin()) {
+        this.userInfo = isLogin();
         this.avator = this.userInfo.avatarUrl;
+      } else {
+        this.toLogin()
       }
     },
     created() {},
-    mounted() {},
+    mounted() {
+    },
     data() {
       return {
+        // 这个是初始化头像地址
         avator: "http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png",
-        allcheck: false,
         listData: [],
-        Listids: [],
         userInfo: {},
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
         listData: [{
             title: "我的订单",
             icon: "icon-unie64a",
@@ -99,7 +107,7 @@
             url: "/pages/login/main"
           });
         }
-      }
+      },
     },
     computed: {}
   };

@@ -16,109 +16,110 @@
         </block>
       </swiper>
     </div>
-    <div class="channel">
-      <div @click="categoryList(item.id)" v-for="(item, index) in channel" :key="index">
-        <img :src="item.icon_url" alt="">
-        <p>{{item.name}}</p>
-      </div>
-    </div>
-    <div class="brand">
-      <div @click="tobrandList" class="head">
-        品牌制造商直供
-      </div>
-      <div class="content">
-        <div @click="branddetail(item.id)" v-for="(item, index) in brandList" :key="index">
-          <div>
-            <p>{{item.name}}</p>
-            <p>{{item.floor_price}}元起</p>
-          </div>
-          <img :src="item.new_pic_url" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="newgoods">
-      <div @click="goodsList('new')" class="newgoods-top">
-        <div class="top">
-          <p>新品首发</p>
-          <p>查看全部</p>
-        </div>
-      </div>
-      <div class="list">
-        <ul>
-          <scroll-view class="scroll-view" :scroll-x="true">
-            <li @click="goodsDetail(item.id)" v-for="(item, index) in newGoods" :key="index">
-              <img :src="item.list_pic_url" alt="">
-              <p>{{item.name}}</p>
-              <p>{{item.goods_brief}}</p>
-              <p>￥{{item.retail_price}}</p>
-            </li>
-          </scroll-view>
-        </ul>
-      </div>
-    </div>
-    <div class="newgoods hotgoods">
-      <div @click="goodsList('hot')" class="newgoods-top">
-        <div class="top">
-          <p>人气推荐
-            <span></span> 好物精选</p>
-          <p>查看全部</p>
-        </div>
-      </div>
-      <div class="list">
-        <ul>
-          <scroll-view class="scroll-view" :scroll-x="true">
-            <li @click="goodsDetail(item.id)" v-for="(item, index) in hotGoods" :key="index">
-              <img :src="item.list_pic_url" alt="">
-              <p>{{item.name}}</p>
-              <p>{{item.goods_brief}}</p>
-              <p>￥{{item.retail_price}}</p>
-            </li>
-          </scroll-view>
-        </ul>
-      </div>
-    </div>
-    <div class="topicList">
-      <div @click="totopic" class="topicList-top">
-        专题精选
-        <span class="icon"></span>
-      </div>
-      <div class="list">
-        <ul>
-          <scroll-view class="scroll-view" :scroll-x="true">
-            <li @click="topicdetail(item.id)" v-for="(item, index) in topicList" :key="index">
-              <img :src="item.item_pic_url" alt="">
-              <div class="btom">
-                <div>
-                  <p>{{item.title}}</p>
-                  <p>{{item.subtitle}}</p>
-                </div>
-                <div>
-                  {{item.price_info}}元起
-                </div>
-              </div>
-            </li>
-          </scroll-view>
-        </ul>
-      </div>
-    </div>
-    <div class="newcategory">
-      <div class="list" v-for="(item, index) in newCategoryList" :key="index">
-        <div class="head">{{item.name}}好物</div>
-        <div class="sublist">
-          <div @click="goodsDetail(subitem.id)" v-for="(subitem, subindex) in item.goodsList" :key="subindex">
-            <img :src="subitem.list_pic_url" alt="">
-            <p>{{subitem.name}}</p>
-            <p>￥{{subitem.retail_price}}</p>
-          </div>
-          <div @click="categoryList(item.id)">
-            <div class="last">
-              <p>{{item.name}}好物</p>
-              <span class="icon"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--<div class="channel">-->
+      <!--<div @click="categoryList(item.id)" v-for="(item, index) in channel" :key="index">-->
+        <!--<img :src="item.icon_url" alt="">-->
+        <!--<p>{{item.name}}</p>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="brand">-->
+      <!--<div @click="tobrandList" class="head">-->
+        <!--品牌制造商直供-->
+      <!--</div>-->
+      <!--<div class="content">-->
+        <!--<div @click="branddetail(item.id)" v-for="(item, index) in brandList" :key="index">-->
+          <!--<div>-->
+            <!--<p>{{item.name}}</p>-->
+            <!--<p>{{item.floor_price}}元起</p>-->
+          <!--</div>-->
+          <!--<img :src="item.new_pic_url" alt="">-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="newgoods">-->
+      <!--<div @click="goodsList('new')" class="newgoods-top">-->
+        <!--<div class="top">-->
+          <!--<p>新品首发</p>-->
+          <!--<p>查看全部</p>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="list">-->
+        <!--<ul>-->
+          <!--<scroll-view class="scroll-view" :scroll-x="true">-->
+            <!--<li @click="goodsDetail(item.id)" v-for="(item, index) in newGoods" :key="index">-->
+              <!--<img :src="item.list_pic_url" alt="">-->
+              <!--<p>{{item.name}}</p>-->
+              <!--<p>{{item.goods_brief}}</p>-->
+              <!--<p>￥{{item.retail_price}}</p>-->
+            <!--</li>-->
+          <!--</scroll-view>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="newgoods hotgoods">-->
+      <!--<div @click="goodsList('hot')" class="newgoods-top">-->
+        <!--<div class="top">-->
+          <!--<p>人气推荐-->
+            <!--<span></span> 好物精选</p>-->
+          <!--<p>查看全部</p>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="list">-->
+        <!--<ul>-->
+          <!--<scroll-view class="scroll-view" :scroll-x="true">-->
+            <!--<li @click="goodsDetail(item.id)" v-for="(item, index) in hotGoods" :key="index">-->
+              <!--<img :src="item.list_pic_url" alt="">-->
+              <!--<p>{{item.name}}</p>-->
+              <!--<p>{{item.goods_brief}}</p>-->
+              <!--<p>￥{{item.retail_price}}</p>-->
+            <!--</li>-->
+          <!--</scroll-view>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="topicList">-->
+      <!--<div @click="totopic" class="topicList-top">-->
+        <!--专题精选-->
+        <!--<span class="icon"></span>-->
+      <!--</div>-->
+      <!--<div class="list">-->
+        <!--<ul>-->
+          <!--<scroll-view class="scroll-view" :scroll-x="true">-->
+            <!--<li @click="topicdetail(item.id)" v-for="(item, index) in topicList" :key="index">-->
+              <!--<img :src="item.item_pic_url" alt="">-->
+              <!--<div class="btom">-->
+                <!--<div>-->
+                  <!--<p>{{item.title}}</p>-->
+                  <!--<p>{{item.subtitle}}</p>-->
+                <!--</div>-->
+                <!--<div>-->
+                  <!--{{item.price_info}}元起-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</li>-->
+          <!--</scroll-view>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--先不展示-->
+    <!--<div class="newcategory">-->
+      <!--<div class="list" v-for="(item, index) in newCategoryList" :key="index">-->
+        <!--<div class="head">{{item.name}}好物</div>-->
+        <!--<div class="sublist">-->
+          <!--<div @click="goodsDetail(subitem.id)" v-for="(subitem, subindex) in item.goodsList" :key="subindex">-->
+            <!--<img :src="subitem.list_pic_url" alt="">-->
+            <!--<p>{{subitem.name}}</p>-->
+            <!--<p>￥{{subitem.retail_price}}</p>-->
+          <!--</div>-->
+          <!--<div @click="categoryList(item.id)">-->
+            <!--<div class="last">-->
+              <!--<p>{{item.name}}好物</p>-->
+              <!--<span class="icon"></span>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -133,8 +134,9 @@ export default {
     ...mapState(["cityName"])
   },
   mounted() {
-    this.getCityName();
-    this.getData();
+    this.getCityName()
+    this.getData()
+    this.aaa()
   },
   data() {
     return {
@@ -149,9 +151,22 @@ export default {
   },
   components: {},
   methods: {
+    aaa () {
+      this.$fly.request({
+        method:"get", //post/get 请求方式
+        url:'/viewshopgoods/list',
+        body:{
+          'page': 1,
+          'limit': 1,
+          'key': ''
+        }
+      }).then(res =>{
+        console.log(res)
+      })
+    },
     ...mapMutations(["update"]),
     toMappage() {
-      var _this = this;
+      let _this = this;
       // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
       wx.getSetting({
         success(res) {
@@ -172,8 +187,9 @@ export default {
     },
     getCityName() {
       var _this = this;
+      // 这里的key是高德地图的key
       var myAmapFun = new amapFile.AMapWX({
-        key: "e545e7f79a643f23aef187add14e4548"
+        key: "97faa54917fe130b2693909070a45945"
       });
       myAmapFun.getRegeo({
         success: function (data) {
@@ -188,8 +204,8 @@ export default {
           console.log(info);
           //如果用户拒绝授权
           // 默认为北京
-          _this.cityName = "北京市";
-          _this.update({ cityName: "北京市" });
+          _this.cityName = "东莞市";
+          _this.update({ cityName: "东莞市" });
         }
       });
     },
@@ -208,11 +224,20 @@ export default {
       this.topicList = data.topicList;
       this.newCategoryList = data.newCategoryList;
     },
+    /**
+     * 跳转到获取详情页面
+     * @param id
+     */
     goodsDetail(id) {
+      console.log(id)
       wx.navigateTo({
         url: "/pages/goods/main?id=" + id
       });
     },
+    /**
+     * 跳转到商品分类列表
+     * @param id
+     */
     categoryList(id) {
       wx.navigateTo({
         url: "/pages/categorylist/main?id=" + id
@@ -250,7 +275,15 @@ export default {
       });
     }
   },
-  created() { }
+  created() { },
+  // 原生的分享功能
+  onShareAppMessage: function () {
+    return {
+      title: 'xbyjShop',
+      desc: '仿网易严选小程序商城',
+      path: '/pages/index/index'
+    }
+  },
 };
 </script>
 

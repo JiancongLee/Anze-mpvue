@@ -40,8 +40,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
+      '@': resolve('src'),
       'vue': 'mpvue',
-      '@': resolve('src')
+      wx: resolve('src/utils/wx')
     },
     symlinks: false,
     aliasFields: ['mpvue', 'weapp', 'browser'],

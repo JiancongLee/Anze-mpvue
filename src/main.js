@@ -5,6 +5,8 @@ import App from './App'
 import MyPlugin from './minxins'
 Vue.use(MyPlugin)
 
+import fly from './utils/fly'
+Vue.prototype.$fly = fly;
 
 //引入store
 import store from './store/index'
@@ -25,7 +27,7 @@ export default {
     "window": {
       "backgroundTextStyle": "light",
       "navigationBarBackgroundColor": "#fff",
-      "navigationBarTitleText": "科比",
+      "navigationBarTitleText": "小杂铺",
       "navigationBarTextStyle": "black"
     },
     "tabBar": {
@@ -39,12 +41,12 @@ export default {
           "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
           "text": "首页"
         },
-        {
-          "pagePath": "pages/topic/main",
-          "iconPath": "static/images/ic_menu_topic_nor.png",
-          "selectedIconPath": "static/images/ic_menu_topic_pressed.png",
-          "text": "专题"
-        },
+        // {
+        //   "pagePath": "pages/topic/main",
+        //   "iconPath": "static/images/ic_menu_topic_nor.png",
+        //   "selectedIconPath": "static/images/ic_menu_topic_pressed.png",
+        //   "text": "专题"
+        // },
         {
           "pagePath": "pages/category/main",
           "iconPath": "static/images/ic_menu_sort_nor.png",
@@ -64,6 +66,11 @@ export default {
           "text": "我的"
         }
       ]
+    },
+    "permission": {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于定位效果展示"
+      }
     }
   }
 }

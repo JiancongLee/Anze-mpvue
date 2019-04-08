@@ -1,7 +1,7 @@
 const pageDatas = {}
 
 let MyPlugin = {};
-MyPlugin.install = function (Vue) {
+MyPlugin.instinstallall = function (Vue) {
   // 添加全局方法或属性
   Vue.prototype.$isPage = function isPage() {
     return this.$mp && this.$mp.mpType === 'page'

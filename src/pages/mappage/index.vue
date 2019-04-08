@@ -42,7 +42,7 @@ export default {
       var _this = this;
       var keywords = this.keywords;
       var myAmapFun = new amapFile.AMapWX({
-        key: "e545e7f79a643f23aef187add14e4548"
+        key: "97faa54917fe130b2693909070a45945"
       });
       myAmapFun.getInputtips({
         keywords: keywords,
