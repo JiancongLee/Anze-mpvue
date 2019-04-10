@@ -16,10 +16,10 @@ export default {
       // avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIbWFEIJj8IpGeHM7dGic1aTFZALjWcMm9ltWfFiaQfVRYticWBfgGfzXWMt2EkJWiaicPtftHAlWxUibxQ/132",
       // watermark: { timestamp: 1535513485, appid: "wx601ce71bde7b9add" }
     };
-    var openId = userInfo.openId;
-    wx.setStorageSync("userInfo", userInfo);
-    wx.setStorageSync("openId", openId);
-    console.log("app created and cache logs by setStorageSync");
+    // var openId = userInfo.openId;
+    // wx.setStorageSync("userInfo", userInfo);
+    // wx.setStorageSync("openId", openId);
+    // console.log("app created and cache logs by setStorageSync");
     //获取openid
 
     // if (!wx.getStorageSync('openid')) {

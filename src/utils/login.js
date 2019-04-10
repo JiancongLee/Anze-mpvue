@@ -3,7 +3,7 @@
  * @returns {*}
  */
 export function isLogin() {
-  const userInfo = wx.getStorageSync('userInfo');
+  const userInfo = wx.getStorageSync('userInfo')
   if (userInfo) {
     return userInfo;
   }

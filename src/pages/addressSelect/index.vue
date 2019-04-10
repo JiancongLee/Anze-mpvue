@@ -70,11 +70,10 @@ export default {
         openId: _this.openId
       });
       for (var i = 0; i < data.data.length; i++) {
-        data.data[i].textStyle = "";
-        data.data[i].textStyle1 = "";
+        data.data[i].textStyle = ""
+        data.data[i].textStyle1 = ""
       }
       this.listData = data.data;
-      console.log(this.listData);
     },
     wxaddress(index) {
       if (index == 1) {

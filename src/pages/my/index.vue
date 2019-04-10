@@ -4,7 +4,7 @@
       <img @click="toLogin" :src="avator" alt="">
       <div @click="toLogin">
         <p>{{userInfo.nickName}}</p>
-        <p v-if="userInfo.nickname">点击登录</p>
+        <p v-if="!userInfo.nickName">点击登录</p>
         <p v-else>微信用户</p>
       </div>
     </div>
@@ -20,26 +20,21 @@
 
 <script>
   import { get, toLogin, login } from "../../utils"
-  // import user from '../../services/user'
   import { isLogin } from "../../utils/login";
 
   export default {
     onShow() {
       // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
-      // if (login()) {
-      //   console.log('hahah3')
-      //   this.userInfo = login();
-      //   console.log(this.userInfo);
-      //   this.avator = this.userInfo.avatarUrl;
-      // }
       if (isLogin()) {
-        this.userInfo = isLogin();
-        this.avator = this.userInfo.avatarUrl;
-      } else {
-        this.toLogin()
+        this.userInfo = isLogin().userInfo
+        this.avator = this.userInfo.avatarUrl
       }
+      // } else {
+      //   this.toLogin()
+      // }
     },
-    created() {},
+    created() {
+    },
     mounted() {
     },
     data() {
@@ -105,7 +100,7 @@
         if (!this.userInfo.avatarUrl) {
           wx.navigateTo({
             url: "/pages/login/main"
-          });
+          })
         }
       },
     },

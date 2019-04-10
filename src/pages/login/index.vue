@@ -45,7 +45,6 @@
           // 第二次登录
           // 或者本地已经有登录态
           // 可使用本函数更新登录态
-          console.log('diyici')
           qcloud.loginWithCode({
             success: res => {
               // this.setData({ userInfo: res, logged: true });
@@ -80,11 +79,19 @@
               }
             }).then(res =>{
               if (res.code === 0) {
-                console.log(res.token)
                 // 存储用户信息
                 wx.setStorageSync('userInfo', userInfo);
                 wx.setStorageSync('token', res.token);
-                console.log(res)
+                wx.showToast({
+                  title: '登录成功',
+                  icon: 'success',
+                  duration: 2000,
+                  success:function(){
+                    wx.switchTab({
+                      url: '/pages/index/main',
+                    })
+                  }
+                })
               }
             })
           })
@@ -106,6 +113,11 @@
         } catch (e) {
           // Do something when catch error
         }
+      },
+      toIndexPage() {
+        wx.navigateTo({
+          url: "/pages/my/main"
+        })
       }
     },
     computed: {}

@@ -7,7 +7,7 @@
     </scroll-view>
     <div class="info">
       <p>{{currentNav.name}}</p>
-      <p>{{currentNav.front_desc}}</p>
+      <p>{{currentNav.desc}}</p>
     </div>
     <div class="list" v-if="goodsList.length!=0">
       <div @click="goodsDetail(item.id)" class="item" v-for="(item, index) in goodsList" :key="index">
@@ -30,8 +30,8 @@ export default {
   created() { },
   mounted() {
     //获取页面传的参数
-    this.categoryId = this.$root.$mp.query.id;
-    this.getAllData();
+    this.categoryId = this.$root.$mp.query.id
+    this.getAllData()
   },
   data() {
     return {
@@ -57,32 +57,68 @@ export default {
         this.scrollLeft = this.nowIndex * 60;
       }
     },
-    async getAllData() {
-      const navdata = await get("/category/categoryNav", {
-        id: this.categoryId
-      });
-      this.navData = navdata.navData;
-      this.currentNav = navdata.currentNav;
+    // async getAllData() {
+    //   const navdata = await get("/category/categoryNav", {
+    //     id: this.categoryId
+    //   });
+    //   this.navData = navdata.navData;
+    //   this.currentNav = navdata.currentNav;
+    //   for (let i = 0; i < this.navData.length; i++) {
+    //     const id = this.navData[i].id;
+    //     if (id == this.currentNav.id) {
+    //       this.nowIndex = i;
+    //     }
+    //   }
+    //
+    //   //需要让导航滚动到可见区域
+    //   if (this.nowIndex > 4) {
+    //     this.scrollLeft = this.nowIndex * 60;
+    //   } else {
+    //     this.scrollLeft = 0;
+    //   }
+    //   const listdata = await get("/goods/goodsList", {
+    //     categoryId: this.categoryId
+    //   });
+    //   this.goodsList = listdata.data;
+    // },
+    getAllData () {
+      this.$fly.request({
+        method: 'get',
+        url: '/api/category/categoryNav',
+        body: {
+          categoryId: this.categoryId
+        }
+      }).then(res =>{
+        if (res.code === 0) {
+          this.navData = res.navListData
+          this.currentNav = res.currentNav
+        }
+      })
       for (let i = 0; i < this.navData.length; i++) {
         const id = this.navData[i].id;
         if (id == this.currentNav.id) {
           this.nowIndex = i;
         }
       }
-
-      //需要让导航滚动到可见区域
+      // 需要让导航滚动到可见区域
       if (this.nowIndex > 4) {
         this.scrollLeft = this.nowIndex * 60;
       } else {
         this.scrollLeft = 0;
       }
-      const listdata = await get("/goods/goodsList", {
-        categoryId: this.categoryId
-      });
-      this.goodsList = listdata.data;
+      this.$fly.request({
+        method: 'get',
+        url: '/api/category/getGoodsList',
+        body: {
+          categoryId: this.categoryId
+        }
+      }).then(res =>{
+        if (res.code === 0) {
+          this.goodsList = res.data
+        }
+      })
     },
     goodsDetail(id) {
-      console.log(id)
       wx.navigateTo({
         url: "/pages/goods/main?id=" + id
       });

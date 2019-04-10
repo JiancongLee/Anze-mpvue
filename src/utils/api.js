@@ -190,6 +190,7 @@
 import { host } from "../utils/config"
 
 export const api = {
-  loginByWeixin: host + '/api/auth/login'
+  loginByWeixin: host + '/api/auth/login',
+  viewPicture: host + '/api/viewImage'
   // loginByWeixin: 'http://localhost:8088/fast/api/auth/login'
 }

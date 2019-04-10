@@ -3,22 +3,19 @@
  */
 import Fly from 'flyio/dist/npm/wx'
 import { host } from "../utils/config"
-import wx from "./wx";
+import wx from "./wx"
+
 const fly = new Fly()
-// const host = "http://localhost:8088/fast"
 //添加请求拦截器
 fly.interceptors.request.use((request) => {
   wx.showLoading({
     title: "加载中",
     mask:true
   });
-  // request.headers["X-Tag"] = "flyio";
-  // request.headers['content-type']= 'application/json';
   request.headers = {
     "X-Tag": "flyio",
     'content-type': 'application/json',
     'token': wx.getStorageSync('token')
-    // 'token': ''
   };
 
   let authParams = {
@@ -34,7 +31,7 @@ fly.interceptors.request.use((request) => {
   request.body && Object.keys(request.body).forEach((val) => {
     if(request.body[val] === ""){
       delete request.body[val]
-    };
+    }
   });
   request.body = {
     ...request.body,
